@@ -137,7 +137,7 @@ class PythonExecutor:
             s = s[:half] + "..." + s[-half:]
         return s
 
-    def batch_apply(self, batch_code, use_tqdm=True):
+    def batch_apply(self, batch_code):
         all_code_snippets = self.process_generation_to_code(batch_code)
 
         timeout_cnt = 0
@@ -154,11 +154,6 @@ class PythonExecutor:
             future = pool.map(executor, all_code_snippets, timeout=self.timeout_length)
             iterator = future.result()
 
-            if len(all_code_snippets) > 100 and use_tqdm:
-                progress_bar = tqdm(total=len(all_code_snippets), desc="Execute")
-            else:
-                progress_bar = None
-
             while True:
                 try:
                     result = next(iterator)
@@ -172,11 +167,6 @@ class PythonExecutor:
                 except Exception as error:
                     print(error)
                     exit()
-                if progress_bar is not None:
-                    progress_bar.update(1)
-
-            if progress_bar is not None:
-                progress_bar.close()
 
         batch_results = []
         for code, (res, report) in zip(all_code_snippets, all_exec_results):

@@ -1,16 +1,7 @@
 import os
 import json
-import random
-import numpy as np
 from pathlib import Path
 from typing import Iterable, Union, Any
-
-
-def set_seed(seed: int = 42) -> None:
-    np.random.seed(seed)
-    random.seed(seed)
-    os.environ["PYTHONHASHSEED"] = str(seed)
-    print(f"Random seed set as {seed}")
 
 
 def load_jsonl(file: Union[str, Path]) -> Iterable[Any]:
