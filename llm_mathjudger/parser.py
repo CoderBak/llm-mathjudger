@@ -3,6 +3,7 @@ import regex
 from typing import TypeVar, Iterable, List, Union, Any, Dict
 from word2number import w2n
 from .utils import *
+from .trajectory import *
 
 
 def _fix_fracs(string):
