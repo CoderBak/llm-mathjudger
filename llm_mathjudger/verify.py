@@ -20,7 +20,8 @@ def basic_check(pred, answer):
     return math_equal(pred, answer, timeout=True)
 
 
-def check(prompt_type, data_name, target, pred):
+def check(data_name, target, pred):
+    prompt_type = "cot"
     # parse question and answer
     gt_cot, gt_ans = parse_ground_truth(target, data_name)
 
