@@ -1,30 +1,3 @@
-# LLM-MathJudger
-
-基于 [LLM-Math](https://github.com/CoderBak/llm-math) 简化的数学判别器. 该版本仅用于数学检查，因此不需要加载模型.
-
-### Quick start
-
-```bash
-pip install llm-mathjudger
-```
-
-### Usage
-
-1. `basic_check(A, B)`
-
-   检查 A, B 两个**纯数学**表达式是否一致，返回 True / False.
-
-2. `check(data_name, target, pred, execute, vis)`
-
-   检查 pred 是否与 target 一致，返回 True / False. target 即为数据集的某一行.
-
-   `execute=False` 表示是否采用 symbolic equal 和 math equal 进行等价判断.
-
-   `vis=False` 表示是否输出 extracted answer.
-
-### Example
-
-```python
 import llm_mathjudger
 import time
 
@@ -71,21 +44,3 @@ timer(
     execute=False,
     vis=True
 )
-```
-
-在 Mac 2020 M1 上的测试结果：
-
-```text
-Extracted answer: approximately12
-False
-Time taken: 11.696291999999996 milliseconds
-Extracted answer: 12
-True
-Time taken: 1.7847079999999682 milliseconds
-Extracted answer: 3*4
-True
-Time taken: 375.44279100000006 milliseconds
-Extracted answer: 12
-True
-Time taken: 9.802499999999936 milliseconds
-```
