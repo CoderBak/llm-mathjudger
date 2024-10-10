@@ -40,3 +40,7 @@ def check(data_name, target, pred, execute=False, vis=False):
 
     else:
         return pred == gt_ans
+
+def extract(data_name, pred):
+    pred = strip_string(extract_answer(pred.strip(), data_name))
+    return pred

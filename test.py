@@ -44,3 +44,7 @@ timer(
     execute=False,
     vis=True
 )
+
+print(llm_mathjudger.extract("math_oai", "Therefore, the answer is approximately \\boxed{12}."))
+print(llm_mathjudger.extract("math_oai", "Therefore, the answer is approximately 12."))
+print(llm_mathjudger.extract("math_oai", "Therefore, the answer is 3 * 4."))
